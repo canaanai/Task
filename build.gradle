@@ -1,0 +1,30 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.1.2-3'
+    ext.kotlin_databinding_compiler = '2.3.2'
+    ext.dagger_version = '2.11'
+    repositories {
+        maven { url 'https://dl.google.com/dl/android/maven2' }
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$kotlin_databinding_compiler"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'https://dl.google.com/dl/android/maven2' }
+        maven { url 'http://114.55.151.237:2048/nexus/content/groups/public' }
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

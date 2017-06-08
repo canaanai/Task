@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Task</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+    <string name="second">秒</string>
+    <string name="time">时长</string>
+    <string name="describe">描述</string>
+    <string name="media_desc">图片或视频</string>
+    <string name="edit">编辑</string>
+</resources>
