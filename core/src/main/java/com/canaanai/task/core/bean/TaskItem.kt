@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.ForeignKey
 import android.arch.persistence.room.ForeignKey.CASCADE
 import android.arch.persistence.room.PrimaryKey
+import android.databinding.BaseObservable
+import android.databinding.Bindable
 import java.io.Serializable
 
 /**
@@ -16,8 +18,22 @@ import java.io.Serializable
         parentColumns = arrayOf("taskId"),
         childColumns = arrayOf("taskId"),
         onDelete = CASCADE)))
-data class TaskItem(@PrimaryKey(autoGenerate = true) var taskItemId: Int,
-                    var taskId: Int,
-                    var duration: Long,
+data class TaskItem(var duration: Long,
                     var desc: String?,
-                    @Embedded var mediaInfo: MediaInfo?) : Serializable
+                    @Embedded var mediaInfo: MediaInfo?) : Serializable{
+
+    @PrimaryKey(autoGenerate = true) var taskItemId: Int = 0
+    var taskId: Int = 0
+
+    fun switch(item: TaskItem){
+        val (_dur, _desc, _media) = item
+
+        item.duration = duration
+        item.desc = desc
+        item.mediaInfo = mediaInfo
+
+        duration = _dur
+        desc = _desc
+        mediaInfo = _media
+    }
+}
