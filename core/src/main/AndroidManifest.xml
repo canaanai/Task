@@ -9,14 +9,6 @@
         android:allowBackup="true"
         android:theme="@style/TaskTheme">
 
-        <activity android:name=".TaskDetailActivity">
-        </activity>
-        <activity android:name=".TaskItemEditorActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
     </application>
 </manifest>

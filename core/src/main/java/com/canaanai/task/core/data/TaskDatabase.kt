@@ -1,4 +1,4 @@
-package com.canaanai.task.core.daos
+package com.canaanai.task.core.data
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
