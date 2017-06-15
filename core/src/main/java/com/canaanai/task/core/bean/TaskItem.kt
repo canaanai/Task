@@ -1,10 +1,7 @@
 package com.canaanai.task.core.bean
 
-import android.arch.persistence.room.Embedded
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.ForeignKey
+import android.arch.persistence.room.*
 import android.arch.persistence.room.ForeignKey.CASCADE
-import android.arch.persistence.room.PrimaryKey
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import java.io.Serializable
@@ -17,7 +14,7 @@ import java.io.Serializable
         entity = Task::class,
         parentColumns = arrayOf("taskId"),
         childColumns = arrayOf("taskId"),
-        onDelete = CASCADE)))
+        onDelete = CASCADE)), indices = arrayOf(Index("taskId", "taskItemId")))
 data class TaskItem(var duration: Long,
                     var desc: String?,
                     @Embedded var mediaInfo: MediaInfo?) : Serializable{

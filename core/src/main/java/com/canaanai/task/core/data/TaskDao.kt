@@ -1,5 +1,6 @@
 package com.canaanai.task.core.data
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.canaanai.task.core.bean.Task
 import com.canaanai.task.core.bean.TaskItem
@@ -9,24 +10,22 @@ import com.canaanai.task.core.bean.TaskItem
  * @version 2017-06-08 16:55
  */
 @Dao interface TaskDao {
-    @Insert fun addTask(task: Task, taskItems: List<TaskItem>)
+    @Insert fun addTask(task: Task)
 
     @Update fun updateTaskItem(taskItem: TaskItem)
 
     @Update fun updateTask(task: Task)
-
-    @Update fun updateTask(task: Task, taskItems: List<TaskItem>)
 
     @Delete fun deleteTask(task: Task): Int
 
     @Delete fun deleteTaskItem(taskItem: TaskItem): Int
 
     @Query("SELECT * FROM Task")
-    fun loadAllTasks(): ArrayList<Task>
+    fun loadAllTasks(): LiveData<List<Task>>
 
-    @Query("SELECT * FROM Task WHERE taskId == :id")
-    fun loadTask(id: Int): ArrayList<Task>
+    @Query("SELECT * FROM Task WHERE taskId == :p0")
+    fun loadTask(id: Int): LiveData<List<Task>>
 
-    @Query("SELECT * FROM TaskItem WHERE taskId == :taskId")
-    fun loadTaskItems(taskId: Int): ArrayList<TaskItem>
+    @Query("SELECT * FROM TaskItem WHERE taskId == :p0")
+    fun loadTaskItems(taskId: Int): LiveData<List<TaskItem>>
 }
