@@ -13,6 +13,8 @@ import rx.functions.Action0
  */
 class TaskItemViewModel(val item: TaskItem, val isEditState: Boolean = true, val mediaClickedCall: (MediaInfo?) -> Unit = {}) {
 
+    var index = -1
+
     val desc = ObservableField<String>()
     val mediaUrl = ObservableField<String>()
     val time = ObservableLong()

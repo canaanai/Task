@@ -19,6 +19,8 @@
             app:toolbarTitle="@{@string/edit}"
             app:toolbarRightButtonBg="@{@drawable/task_ic_done}"
             app:toolbarLeftButtonBg="@{@drawable/task_ic_back}"
+            app:cmdRightButtonClicked="@{viewModel.cmdRightToolButton}"
+            app:cmdLeftButtonClicked="@{viewModel.cmdLeftToolButton}"
             android:id="@+id/toolbar"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -48,6 +50,7 @@
             android:inputType="textPersonName"
             android:gravity="center"
             android:text="@={viewModel.title}"
+            android:enabled="@{viewModel.isEditable}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@+id/guideline"
@@ -68,6 +71,10 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTaskTitle"
+            app:itemLayout="@{@layout/item_task_item_list}"
+            app:footViewLayout="@{@layout/foot_task_item_list}"
+            app:listData="@{viewModel.taskItems}"
+            app:bindingHolder="@{viewModel.bindingHolder}"
             tools:listitem="@layout/item_task_item_list"/>
     </android.support.constraint.ConstraintLayout>
 </layout>

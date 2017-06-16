@@ -21,11 +21,11 @@ import com.canaanai.task.core.bean.TaskItem
     @Delete fun deleteTaskItem(taskItem: TaskItem): Int
 
     @Query("SELECT * FROM Task")
-    fun loadAllTasks(): LiveData<List<Task>>
+    fun loadAllTasks(): List<Task>
 
     @Query("SELECT * FROM Task WHERE taskId == :p0")
-    fun loadTask(id: Int): LiveData<List<Task>>
+    fun loadTask(id: Int): List<Task>
 
     @Query("SELECT * FROM TaskItem WHERE taskId == :p0")
-    fun loadTaskItems(taskId: Int): LiveData<List<TaskItem>>
+    fun loadTaskItems(taskId: Int): List<TaskItem>
 }
